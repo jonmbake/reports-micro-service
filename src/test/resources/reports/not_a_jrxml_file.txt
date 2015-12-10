@@ -1,0 +1,1 @@
+This is not a report file.  It is here to test that report files are filtered out when compiling reports.
