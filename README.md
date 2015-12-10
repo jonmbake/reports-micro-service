@@ -58,7 +58,7 @@ Every query parameter besides `jwt` will be passed in as report parameter.  The 
 
 ## Deploying to AWS
 
-Once your Java 8/Tomcat8 instance and database are set up.  Simply set up the environment configs and copy over [report-api.war](https://github.com/jonmbake/jasperreports-micro-service/blob/master/target/report-api.war) to Tomcat's `webapp` directory.  Copy over report definitions to `REPORTS_DIR`.
+Once your Java 8/Tomcat8 instance and database are set up.  Simply set up the environment configs and copy over [report-api.war](https://github.com/jonmbake/jasperreports-micro-service/blob/master/target/report-api.war?raw=true) to Tomcat's `webapp` directory.  Copy over report definitions to `REPORTS_DIR`.
 
 # License
 
