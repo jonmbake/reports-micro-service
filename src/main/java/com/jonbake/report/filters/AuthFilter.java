@@ -47,7 +47,11 @@ public class AuthFilter implements ContainerRequestFilter {
         byte[] secret = DECODER.decodeBase64(jwtSecret);
         //Map<String,Object> payload;
         try {
-            new JWTVerifier(secret, System.getenv("JWT_AUDIENCE"), System.getenv("JWT_ISSUER")).verify(token);
+            new JWTVerifier(
+                    secret,
+                    configuration.getJWTAudience().orElse(null),
+                    configuration.getJWTIssuer().orElse(null)
+            ).verify(token);
         } catch (Exception ex) {
             throw new WebApplicationException(Response.Status.FORBIDDEN);
         }
