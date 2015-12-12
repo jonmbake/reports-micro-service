@@ -1,6 +1,6 @@
-# jasperreports-micro-service
+# reports-micro-service
 
-A RESTful micro service for running [Jasper Reports](http://community.jaspersoft.com/).  Easily deployable to a [AWS Elastic Beanstalk Java 8/Tomcat8 Instance](https://aws.amazon.com/about-aws/whats-new/2014/11/05/aws-elastic-beanstalk-supports-java8-tomcat8/).
+A RESTful micro service for running reports.  The default implementation uses [Jasper Reports Library 6.2.0](http://community.jaspersoft.com/).  Reporting library can be swapped out by implementing [ReportService](https://github.com/jonmbake/reports-micro-service/blob/master/src/main/java/com/jonbake/report/services/ReportService.java). Easily deployable to a [AWS Elastic Beanstalk Java 8/Tomcat8 Instance](https://aws.amazon.com/about-aws/whats-new/2014/11/05/aws-elastic-beanstalk-supports-java8-tomcat8/).
 
 ## Authentication
 
@@ -42,26 +42,22 @@ The URL to run a report is of the form `/reports-api/reports/info`.  For example
 https://localhost/reports-api/reports/info?jwt=eyJhb...
 ```
 
-This will return json of the form `{names: ['JasperRepor1', 'JasperRepor2']}`.
+This will return json of the form `{names: ['Repor1', 'Repor2']}`.
 
 ### Running a Report
 
 To run a report, the sub-url is `/reports-api/reports/filled/{report-name}`.  For example:
 
 ```
-https://localhost/reports-api/reports/filled/JasperReport1?fromDate=2015-10-10thruDate=2015-10-10jwt=eyJhb...
+https://localhost/reports-api/reports/filled/Report1?fromDate=2015-10-10thruDate=2015-10-10jwt=eyJhb...
 ```
 
 Every query parameter besides `jwt` will be passed in as report parameter.  The PDF version of the filled report is returned.
 
-*Note:* The service uses version 6.2.0 of the Jasper Reports Library.  Make sure to use the corresponding version Jaspersoft Studio.
-
 ## Deploying to AWS
 
-Once your Java 8/Tomcat8 instance and database are set up.  Simply set up the environment configs and copy over [report-api.war](https://github.com/jonmbake/jasperreports-micro-service/blob/master/target/report-api.war?raw=true) to Tomcat's `webapp` directory.  Copy over report definitions to `REPORTS_DIR`.
+Once your Java 8/Tomcat8 instance and database are set up.  Simply set up the environment configs and copy over [report-api.war](https://github.com/jonmbake/reports-micro-service/blob/master/target/report-api.war?raw=true) to Tomcat's `webapp` directory.  Copy over report definitions to `REPORTS_DIR`.
 
 # License
 
 MIT
-
-Jasper Reports Library is licensed under LGPL.

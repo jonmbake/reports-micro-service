@@ -1,7 +1,7 @@
 package com.jonbake.report.rest;
 
 import com.jonbake.report.exception.ReportRunningException;
-import com.jonbake.report.util.JasperUtil;
+import com.jonbake.report.util.ReportUtil;
 import com.jonbake.report.services.ReportService;
 import java.io.OutputStream;
 import java.util.Optional;
@@ -73,6 +73,6 @@ public class ReportRunnerResource {
     private Map<String, Object> extractReportParams (final UriInfo uriInfo) {
         return uriInfo.getQueryParameters().entrySet().stream()
             .filter((p) -> p.getKey().toLowerCase().equals("jwt"))
-            .collect(Collectors.toMap((p) -> p.getKey().toLowerCase(), JasperUtil.QUERY_TO_JASPER_PARAM));
+            .collect(Collectors.toMap((p) -> p.getKey().toLowerCase(), ReportUtil.QUERY_TO_REPORT_PARAM));
     }
 }

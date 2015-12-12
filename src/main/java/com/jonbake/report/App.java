@@ -6,7 +6,7 @@ import com.jonbake.report.rest.ReportRunnerResource;
 import com.jonbake.report.configuration.Configuration;
 import com.jonbake.report.configuration.EnvironmentConfiguration;
 import com.jonbake.report.rest.ReportInfoResource;
-import com.jonbake.report.services.ReportService;
+import com.jonbake.report.services.JasperReportService;
 import com.jonbake.report.util.ReportDatasource;
 import javax.ws.rs.ApplicationPath;
 import org.glassfish.jersey.filter.LoggingFilter;
@@ -33,7 +33,7 @@ public class App extends ResourceConfig {
     public App (final Configuration configuration) {
         register(ReportsExceptionMapper.class);
         register(LoggingFilter.class);
-        ReportService rs = new ReportService(configuration, new ReportDatasource(configuration));
+        JasperReportService rs = new JasperReportService(configuration, new ReportDatasource(configuration));
         register(new ReportRunnerResource(rs));
         register(new ReportInfoResource(rs));
         register(new AuthFilter(configuration));
