@@ -3,7 +3,6 @@ package com.jonbake.report.services;
 import com.google.common.io.Files;
 import com.jonbake.report.exception.ConfigurationException;
 import com.jonbake.report.configuration.Configuration;
-import com.jonbake.report.configuration.EnvironmentConfiguration;
 import com.jonbake.report.exception.ReportRunningException;
 import com.jonbake.report.exception.ReportsException;
 import com.jonbake.report.util.ReportDatasource;
@@ -48,8 +47,7 @@ public class JasperReportService implements ReportService<JasperPrint> {
         }
         File reportDir = new File(reportDirName);
         if (!reportDir.isDirectory()) {
-            throw new ConfigurationException(EnvironmentConfiguration.JASPER_REPORTS_DIR
-                + " must be a valid directory.");
+            throw new ConfigurationException(reportDirName + " must be a valid directory accesible by Tomcat.");
         }
         reports = Arrays.stream(reportDir.listFiles())
             .filter((f) -> "jrxml".equals(Files.getFileExtension(f.getName())))

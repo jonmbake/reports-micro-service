@@ -10,7 +10,7 @@ import org.apache.commons.lang3.ObjectUtils;
  * @author jonmbake
  */
 public class EnvironmentConfiguration implements Configuration {
-    public static final String JASPER_REPORTS_DIR = "JASPER_REPORTS_DIR";
+    public static final String REPORTS_DIR = "REPORTS_DIR";
     public static final String JWT_SECRET = "JWT_SECRET";
     public static final String JWT_AUDIENCE = "JWT_AUDIENCE";
     public static final String JWT_ISSUER = "JWT_ISSUER";
@@ -20,7 +20,7 @@ public class EnvironmentConfiguration implements Configuration {
      */
     @Override
     public final String getReportsDirectory () {
-        return getlValue(JASPER_REPORTS_DIR);
+        return getlValue(REPORTS_DIR);
     }
     /**
      * {@inheritDoc}
