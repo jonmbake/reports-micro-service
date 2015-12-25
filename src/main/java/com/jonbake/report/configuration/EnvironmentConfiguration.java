@@ -57,7 +57,9 @@ public class EnvironmentConfiguration implements Configuration {
      * @return configuration value if set
      */
     private Optional<String> getOptionalValue (final String propertyName) {
-        return Optional.of(ObjectUtils.firstNonNull(System.getProperty(propertyName), System.getenv(propertyName)));
+        return Optional.ofNullable(
+                ObjectUtils.firstNonNull(System.getProperty(propertyName), System.getenv(propertyName))
+        );
     }
     /**
      * Return an optional config value.  Checks both System and Environment properties.

@@ -5,6 +5,8 @@ import com.jonbake.report.configuration.Configuration;
 import com.jonbake.report.configuration.EnvironmentConfiguration;
 import com.jonbake.report.exception.ConfigurationException;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.Priority;
 import javax.ws.rs.Priorities;
 import javax.ws.rs.WebApplicationException;
@@ -53,6 +55,7 @@ public class AuthFilter implements ContainerRequestFilter {
                     configuration.getJWTIssuer().orElse(null)
             ).verify(token);
         } catch (Exception ex) {
+            Logger.getLogger(this.getClass().getName()).log(Level.WARNING, "JWT verification failed", ex);
             throw new WebApplicationException(Response.Status.FORBIDDEN);
         }
     }
